@@ -1,0 +1,14 @@
+pub use sea_orm_migration::prelude::*;
+
+mod entities;
+
+mod m20260828_070353_create_tokens;
+
+pub struct Migrator;
+
+#[async_trait::async_trait]
+impl MigratorTrait for Migrator {
+    fn migrations() -> Vec<Box<dyn MigrationTrait>> {
+        vec![Box::new(m20260828_070353_create_tokens::Migration)]
+    }
+}

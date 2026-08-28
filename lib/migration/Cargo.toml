@@ -1,0 +1,10 @@
+[package]
+name = "bzd-notify-migration"
+edition = "2024"
+
+[dependencies]
+async-std = { version = "1", features = ["attributes", "tokio1"] }
+sea-orm-migration = { version = "2.0.2", features = [
+  "runtime-tokio-rustls",
+  "sqlx-postgres",
+] }

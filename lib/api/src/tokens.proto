@@ -1,0 +1,15 @@
+syntax = "proto3";
+package bzd.notify.tokens;
+
+service TokensService {
+    rpc CreateToken(CreateTokenRequest) returns (CreateTokenResponse);
+}
+
+message CreateTokenRequest {
+    optional string current_user_id = 100;
+    optional string token = 101;
+}
+
+message CreateTokenResponse {
+    optional string token_id = 101;
+}
