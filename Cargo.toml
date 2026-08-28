@@ -7,3 +7,30 @@ resolver = "3"
 members = ["lib/api", "lib/migration"]
 
 [dependencies]
+bzd-notify-api = { path = "lib/api" }
+bzd-lib = { git = "https://github.com/bez-dna/bzd-lib.git" }
+
+axum = "0.8.9"
+
+tokio = { version = "1.53.1", features = ["full"] }
+
+tonic = "0.14.6"
+tonic-health = "0.14.6"
+tonic-reflection = "0.14.6"
+
+prost = "0.14.4"
+prost-types = "0.14.4"
+
+serde = "1.0.229"
+serde_json = "1.0.151"
+
+sea-orm = { version = "2.0.2", features = [
+  "sqlx-postgres",
+  "runtime-tokio-rustls",
+  "mock",
+] }
+
+tracing = "0.1.44"
+thiserror = "2.0.20"
+validator = { version = "0.21.0", features = ["derive"] }
+chrono = "0.4.45"
