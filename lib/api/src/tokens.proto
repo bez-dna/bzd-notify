@@ -7,7 +7,7 @@ service TokensService {
 
 message CreateTokenRequest {
     optional string current_user_id = 100;
-    optional string token = 101;
+    optional bytes token = 101;
 }
 
 message CreateTokenResponse {

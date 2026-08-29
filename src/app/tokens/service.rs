@@ -26,7 +26,7 @@ pub mod create_token {
     pub struct Request {
         pub current_user: CurrentUser,
         #[validate(length(min = 2))]
-        pub token: String,
+        pub token: Vec<u8>,
     }
 
     pub struct Response {

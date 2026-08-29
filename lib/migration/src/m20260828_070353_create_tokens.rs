@@ -13,7 +13,7 @@ impl MigrationTrait for Migration {
                 table_auto(Tokens::Table)
                     .col(uuid(Tokens::TokenId).primary_key())
                     .col(uuid(Tokens::UserId))
-                    .col(text(Tokens::Token))
+                    .col(binary(Tokens::Token))
                     .to_owned(),
             )
             .await?;
