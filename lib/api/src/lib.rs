@@ -3,3 +3,7 @@ pub mod tokens {
 
     tonic::include_proto!("bzd.notify.tokens");
 }
+
+pub mod notify {
+    tonic::include_proto!("bzd.notify.notify");
+}
