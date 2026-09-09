@@ -6,14 +6,14 @@ use sea_orm::entity::prelude::*;
 pub struct Model {
     #[sea_orm(primary_key, auto_increment = false)]
     pub token_id: Uuid,
-    pub token: String,
+    pub token: Vec<u8>,
     pub user_id: Uuid,
     pub created_at: DateTime,
     pub updated_at: DateTime,
 }
 
 impl Model {
-    pub fn new(token: String, user_id: Uuid) -> Self {
+    pub fn new(token: Vec<u8>, user_id: Uuid) -> Self {
         let now = Utc::now().naive_utc();
         let token_id = Uuid::now_v7();
 

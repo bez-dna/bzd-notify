@@ -8,11 +8,16 @@ members = ["lib/api", "lib/migration"]
 
 [dependencies]
 bzd-notify-api = { path = "lib/api" }
+bzd-messages-api = { git = "https://github.com/bez-dna/bzd-messages.git", branch = "dev" }
+bzd-users-api = { git = "https://github.com/bez-dna/bzd-users.git" }
 bzd-lib = { git = "https://github.com/bez-dna/bzd-lib.git" }
 
 axum = "0.8.9"
 
 tokio = { version = "1.53.1", features = ["full"] }
+tokio-stream = "0.1.19"
+
+async-nats = "0.50.0"
 
 tonic = "0.14.6"
 tonic-health = "0.14.6"

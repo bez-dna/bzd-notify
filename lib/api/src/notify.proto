@@ -1,0 +1,32 @@
+syntax = "proto3";
+package bzd.notify.notify;
+
+import "google/protobuf/timestamp.proto";
+
+message Notify {
+    oneof payload {
+        Message message = 101;
+    }
+}
+
+message Message {
+    optional string message_id = 101;
+    optional string text = 102;
+    optional string user_id = 103;
+    optional string code = 104;
+    optional int64 order = 105;
+
+    optional User user = 501;
+
+    repeated string message_ids = 601;
+
+    optional google.protobuf.Timestamp created_at = 901;
+    optional google.protobuf.Timestamp updated_at = 902;
+
+    message User {
+        optional string user_id = 101;
+        optional string name = 102;
+        optional string abbr = 103;
+        optional string color = 104;
+    }
+}

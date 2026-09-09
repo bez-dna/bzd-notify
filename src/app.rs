@@ -9,17 +9,20 @@ use tracing::info;
 
 use crate::app::{settings::AppSettings, state::AppState};
 
+mod clients;
 mod db;
 mod error;
+mod mess;
+mod notify;
 mod settings;
 mod state;
 mod tokens;
 
 pub async fn run() -> Result<(), Error> {
     let settings = AppSettings::new()?;
-    let state = AppState::new(settings.clone()).await?;
+    let state = AppState::new(&settings).await?;
 
-    try_join!(http_and_grpc(&state, &settings.http))?;
+    try_join!(http_and_grpc(&state, &settings.http), messaging(&state))?;
 
     Ok(())
 }
@@ -44,6 +47,13 @@ async fn http_and_grpc(state: &AppState, settings: &HttpSettings) -> Result<(), 
 
     info!("app: started on {}", listener.local_addr()?);
     axum::serve(listener, router).await?;
+
+    Ok(())
+}
+
+async fn messaging(state: &AppState) -> Result<(), Error> {
+    info!("messaging: started");
+    notify::messaging(state).await?;
 
     Ok(())
 }
