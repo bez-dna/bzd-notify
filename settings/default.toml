@@ -10,6 +10,9 @@ endpoint = "postgres://postgres:postgres@0.0.0.0:5432/bzd_notify"
 endpoint = "0.0.0.0:4222"
 stream = "bzd"
 
+[clients.users]
+endpoint = ""
+
 [notify.messaging.messages]
 subjects = ["bzd.messages.events.messages"]
 consumer = "bzd-notify-notify-messages"

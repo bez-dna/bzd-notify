@@ -693,28 +693,7 @@ dependencies = [
 [[package]]
 name = "bzd-lib"
 version = "0.0.0"
-source = "git+https://github.com/bez-dna/bzd-lib.git?branch=dev#acbd0da7565c1bfe11e81bfff8b5b0db3c91bdef"
-dependencies = [
- "anyhow",
- "chrono",
- "config",
- "prost",
- "prost-types",
- "serde",
- "serde_json",
- "strum 0.28.0",
- "strum_macros 0.28.0",
- "tonic",
- "tonic-prost-build",
- "tracing",
- "tracing-subscriber",
- "uuid",
-]
-
-[[package]]
-name = "bzd-lib"
-version = "0.0.0"
-source = "git+https://github.com/bez-dna/bzd-lib.git#452a8f92e3dbb77fcdb3a5c46658660748129079"
+source = "git+https://github.com/bez-dna/bzd-lib.git#de03732b60c851ae36fc32b43c7803281e310477"
 dependencies = [
  "anyhow",
  "chrono",
@@ -737,7 +716,7 @@ name = "bzd-messages-api"
 version = "0.0.0"
 source = "git+https://github.com/bez-dna/bzd-messages.git?branch=dev#bd2ab7c8aa944109d04447cd903fcecbe6e188c8"
 dependencies = [
- "bzd-lib 0.0.0 (git+https://github.com/bez-dna/bzd-lib.git)",
+ "bzd-lib",
  "prost",
  "prost-types",
  "strum 0.27.2",
@@ -753,9 +732,10 @@ version = "0.0.0"
 dependencies = [
  "async-nats",
  "axum",
- "bzd-lib 0.0.0 (git+https://github.com/bez-dna/bzd-lib.git?branch=dev)",
+ "bzd-lib",
  "bzd-messages-api",
  "bzd-notify-api",
+ "bzd-users-api",
  "chrono",
  "prost",
  "prost-types",
@@ -776,7 +756,7 @@ dependencies = [
 name = "bzd-notify-api"
 version = "0.0.0"
 dependencies = [
- "bzd-lib 0.0.0 (git+https://github.com/bez-dna/bzd-lib.git)",
+ "bzd-lib",
  "prost",
  "prost-types",
  "tonic",
@@ -790,6 +770,21 @@ version = "0.0.0"
 dependencies = [
  "async-std",
  "sea-orm-migration",
+]
+
+[[package]]
+name = "bzd-users-api"
+version = "0.0.0"
+source = "git+https://github.com/bez-dna/bzd-users.git#1a1e847f934b332fa2f5f13324faac9e8d8967ba"
+dependencies = [
+ "bzd-lib",
+ "prost",
+ "prost-types",
+ "strum 0.28.0",
+ "strum_macros 0.28.0",
+ "tonic",
+ "tonic-prost",
+ "tonic-prost-build",
 ]
 
 [[package]]
@@ -1271,7 +1266,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb"
 dependencies = [
  "libc",
- "windows-sys 0.61.2",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -2537,7 +2532,7 @@ version = "0.14.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "03da047801ff44bb6a4d407d4860c05fd70bb81714e6b2f3812603d5b145b042"
 dependencies = [
- "heck 0.5.0",
+ "heck 0.4.1",
  "itertools",
  "log",
  "multimap",
@@ -2814,7 +2809,7 @@ dependencies = [
  "errno",
  "libc",
  "linux-raw-sys",
- "windows-sys 0.61.2",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -3647,10 +3642,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
 dependencies = [
  "fastrand",
- "getrandom 0.4.3",
+ "getrandom 0.3.4",
  "once_cell",
  "rustix",
- "windows-sys 0.61.2",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]

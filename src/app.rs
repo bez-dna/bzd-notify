@@ -9,6 +9,7 @@ use tracing::info;
 
 use crate::app::{settings::AppSettings, state::AppState};
 
+mod clients;
 mod db;
 mod error;
 mod mess;

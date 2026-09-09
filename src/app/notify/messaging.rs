@@ -54,9 +54,14 @@ mod messages {
     }
 
     pub async fn handler(state: &NotifyState, message: jetstream::Message) -> Result<(), AppError> {
-        let NotifyState { mess, settings, .. } = state;
+        let NotifyState {
+            mess,
+            settings,
+            clients,
+            ..
+        } = state;
 
-        service::notify_message(&mess.js, &settings, (&message).try_into()?).await?;
+        service::notify_message(&mess.js, &settings, &clients, (&message).try_into()?).await?;
 
         message.ack().await?;
 
@@ -69,7 +74,10 @@ mod messages {
         fn try_from(message: &jetstream::Message) -> Result<Self, Self::Error> {
             let message = events::Message::decode(message.payload.clone())?;
 
-            Ok(Self { message })
+            Ok(Self {
+                message,
+                user: None,
+            })
         }
     }
 }

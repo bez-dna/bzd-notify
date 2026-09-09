@@ -1,3 +1,4 @@
+use bzd_lib::settings::ClientSettings;
 use bzd_lib::settings::DBSettings;
 use bzd_lib::settings::NATSSettings;
 use bzd_lib::settings::Settings;
@@ -13,6 +14,12 @@ pub struct AppSettings {
     pub db: DBSettings,
     pub nats: NATSSettings,
     pub notify: NotifySettings,
+    pub clients: ClientsSettings,
+}
+
+#[derive(Deserialize, Clone)]
+pub struct ClientsSettings {
+    pub users: ClientSettings,
 }
 
 impl Settings<AppSettings> for AppSettings {}

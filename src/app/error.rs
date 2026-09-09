@@ -30,6 +30,7 @@ impl From<validator::ValidationErrors> for AppError {
 
 internal_from!(
     AppError;
+    tonic::Status,
     sea_orm::DbErr,
     async_nats::Error,
     async_nats::error::Error<async_nats::jetstream::context::PublishErrorKind>,
