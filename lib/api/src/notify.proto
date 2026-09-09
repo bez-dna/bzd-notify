@@ -5,18 +5,20 @@ import "google/protobuf/timestamp.proto";
 
 message Notify {
     oneof payload {
-        Message message = 1;
+        Message message = 101;
     }
 }
 
 message Message {
     optional string message_id = 101;
     optional string text = 102;
-    optional string code = 103;
-    optional int64 order = 104;
+    optional string user_id = 103;
+    optional string code = 104;
+    optional int64 order = 105;
 
     optional User user = 501;
-    // optional Stream stream = 502;
+
+    repeated string message_ids = 601;
 
     optional google.protobuf.Timestamp created_at = 901;
     optional google.protobuf.Timestamp updated_at = 902;
@@ -29,9 +31,4 @@ message Message {
         optional string abbr = 105;
         optional string color = 106;
     }
-
-    // message Stream {
-    //     optional string stream_id = 101;
-    //     optional string message_id = 102;
-    // }
 }

@@ -1,3 +1,4 @@
+use bzd_lib::internal_from;
 use thiserror::Error;
 use tonic::Status;
 
@@ -11,15 +12,12 @@ impl From<AppError> for Status {
 
 #[derive(Error, Debug)]
 pub enum AppError {
-    // Ok
-    #[error("DB")]
-    Db(#[from] sea_orm::DbErr),
     #[error("VALIDATION")]
     Validation,
-    // #[error("NOT_FOUND")]
-    // NotFound,
     #[error("FORBIDDEN")]
     Forbidden,
+    #[error("INTERNAL")]
+    Internal,
     #[error("UNREACHABLE")]
     Unreachable,
 }
@@ -29,3 +27,12 @@ impl From<validator::ValidationErrors> for AppError {
         Self::Validation
     }
 }
+
+internal_from!(
+    AppError;
+    sea_orm::DbErr,
+    async_nats::Error,
+    async_nats::error::Error<async_nats::jetstream::context::PublishErrorKind>,
+    prost::DecodeError,
+    prost::EncodeError,
+);
